@@ -4,7 +4,7 @@
 
 ### Technologies Used:
 - **Frontend**: Angular, TypeScript
-- **Backend**: C#
+- **Backend**: C#, .NET Core
 - **Database**: SQL Server (SSMS)
 - **Containerization**: (none)
 - **Web Server**: (none)
@@ -71,6 +71,9 @@ The Project Management Tool is an open-source application designed to help teams
 ### Reporting
 - Generate project reports
 - Team performance analytics
+
+### Performance improvements
+- Codebase refactoring
 
 ---
 
@@ -159,7 +162,7 @@ We welcome contributions from the community. To contribute, follow these steps:
 1. **Fork the repository**.
 2. **Create a new branch** for your feature or bug fix:
    ```bash
-   git checkout -b feature-name
+   git checkout -b feature/(feature-name)
    ```
 3. **Commit your changes**:
 ```bash
@@ -167,7 +170,7 @@ git commit -m "Add feature"
 ```
 4. **Push to your branch**:
 ```bash
-git push origin feature-name
+git push origin feature/(feature-name)
 ```
 5. **Create a pull request**.
 Please ensure your code follows the project's coding standards and passes all tests.
