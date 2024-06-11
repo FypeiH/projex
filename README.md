@@ -27,7 +27,7 @@
 
 ## 📢 Introduction
 
-The Project Management Tool is an open-source application designed to help teams plan, track, and collaborate on projects. It provides a comprehensive set of features, including task management, team collaboration, and project tracking through an intuitive dashboard.
+ProjeX is an open-source application designed to help teams plan, track, and collaborate on projects. It provides a comprehensive set of features, including task management, team collaboration, and project tracking through an intuitive dashboard.
 
 ---
 
