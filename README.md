@@ -1,6 +1,6 @@
 <img align="center" src="public/projex_white.svg" width="400" height="400"/>
 
-# 🗃 Projex - Project Manager Tool
+# 🗃 ProjeX - Project Manager Tool
 
 ## License: MIT
 
