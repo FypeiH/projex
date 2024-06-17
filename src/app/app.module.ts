@@ -2,18 +2,15 @@
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
-import { SocialLoginModule, SocialAuthServiceConfig } from "@abacritt/angularx-social-login";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ReactiveFormsModule } from "@angular/forms";
 
 //Components' imports
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./components/login/login.component";
 
 //Providers' imports
-import {
-  GoogleLoginProvider
-} from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -24,29 +21,16 @@ import {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SocialLoginModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
-      progressBar: true
+      progressBar: true,
+      preventDuplicates: true,
+      resetTimeoutOnDuplicate: true,
     })
   ],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('YOUR_GOOGLE_OAUTH_CLIENT_ID', {
-              oneTapEnabled: false
-            })
-          }
-        ],
-      } as SocialAuthServiceConfig,
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
