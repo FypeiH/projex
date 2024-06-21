@@ -1,0 +1,23 @@
+<div class="flex flex-col md:flex-row items-center bg-gray-300">
+  <app-login
+    #login
+    class="flex flex-col p-10 w-full md:w-1/2 text-black h-screen justify-between"
+    [ngClass]="{ flex: !isSignUpDisplayed, hidden: isSignUpDisplayed }"
+    (toggleLoginSignup)="toggleLoginSignup(true)"
+  ></app-login>
+  <app-signup
+    #signup
+    class="flex-col p-10 w-full md:w-1/2 text-black h-screen justify-between ml-auto"
+    [ngClass]="{ flex: isSignUpDisplayed, hidden: !isSignUpDisplayed }"
+    (toggleLoginSignup)="toggleLoginSignup(false)"
+  ></app-signup>
+  <div
+    #cover
+    class="fixed w-1/2 inset-0 bg-login duration-200 ease-out transition-all hidden md:block"
+    [ngClass]="{
+      'translate-x-full': !isSignUpDisplayed,
+      'translate-x-0': isSignUpDisplayed
+    }"
+    (click)="toggleLoginSignup(!isSignUpDisplayed)"
+  ></div>
+</div>

@@ -8,14 +8,18 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 //Components' imports
 import { AppComponent } from "./app.component";
-import { LoginComponent } from "./components/login/login.component";
+import { LoginComponent } from "./components/login-signup/login/login.component";
+import { LoginSignUpComponent } from "./components/login-signup/login-signup.component";
+import { SignUpComponent } from "./components/login-signup/signup/signup.component";
 
 //Providers' imports
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginSignUpComponent,
     LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

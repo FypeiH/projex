@@ -1,0 +1,105 @@
+<div class="flex flex-row justify-between">
+  <div class="flex items-center">
+    <img src="projex_black.svg" alt="Black Logo" class="h-[4rem]" />
+  </div>
+  <div class="flex items-center">
+    <button class="underline text-sm font-semibold" (click)="toggleLogin()">
+      Already have an account
+    </button>
+  </div>
+</div>
+<div class="flex flex-col md:text-center items-center my-auto">
+  <div class="xl:w-1/2">
+    <h1 class="text-3xl font-semibold">Welcome to ProjeX</h1>
+    <p class="text-sm mt-2 font-medium">Enter your ProjeX account details.</p>
+    <div class="mt-10">
+      <button
+        class="w-full bg-white hover:bg-gray-50 font-semibold py-4 rounded-lg"
+        (click)="signUpWithGoogle()"
+      >
+        <div class="flex flex-row justify-center">
+          <img
+            class="w-6 h-6"
+            src="google.svg"
+            loading="lazy"
+            alt="google logo"
+          />
+          <span class="ml-3">Sign up with Google</span>
+        </div>
+      </button>
+      <button
+        class="mt-4 w-full bg-white hover:bg-gray-50 font-semibold py-4 rounded-lg"
+        (click)="signUpWithGithub()"
+      >
+        <div class="flex flex-row justify-center">
+          <img
+            class="w-6 h-6"
+            src="github.svg"
+            loading="lazy"
+            alt="github logo"
+          />
+          <span class="ml-3">Sign up with GitHub</span>
+        </div>
+      </button>
+      <div class="flex flex-row items-center justify-between my-8">
+        <hr class="h-px bg-black w-full border-0" />
+        <span class="mx-2 text-sm font-semibold">OR</span>
+        <hr class="h-px bg-black w-full border-0" />
+      </div>
+      <div class="flex flex-col">
+        <form [formGroup]="signUpForm" (submit)="signUp()">
+          <input
+            type="text"
+            formControlName="name"
+            class="w-full bg-white p-4 rounded-lg placeholder:text-gray-700 border-0 mb-4"
+            [ngClass]="{
+              'bg-red-100 text-red-600 placeholder:text-red-600':
+              signUpForm.get('name')?.invalid && triedToSubmit
+            }"
+            placeholder="Name"
+            aria-label="Name"
+          />
+          <input
+            type="text"
+            formControlName="username"
+            class="w-full bg-white p-4 rounded-lg placeholder:text-gray-700 border-0 mb-4"
+            [ngClass]="{
+              'bg-red-100 text-red-600 placeholder:text-red-600':
+              signUpForm.get('username')?.invalid && triedToSubmit
+            }"
+            placeholder="Username"
+            aria-label="Username"
+          />
+          <input
+            type="text"
+            formControlName="email"
+            class="w-full bg-white p-4 rounded-lg placeholder:text-gray-700 border-0 mb-4"
+            [ngClass]="{
+              'bg-red-100 text-red-600 placeholder:text-red-600':
+              signUpForm.get('email')?.invalid && triedToSubmit
+            }"
+            placeholder="Email"
+            aria-label="Email"
+          />
+          <input
+            type="password"
+            formControlName="password"
+            class="w-full bg-white p-4 rounded-lg placeholder:text-gray-700 border-0 mb-4"
+            [ngClass]="{
+              'bg-red-100 text-red-600 placeholder:text-red-600':
+              signUpForm.get('password')?.invalid && triedToSubmit
+            }"
+            placeholder="Password"
+            aria-label="Password"
+          />
+          <button
+            type="submit"
+            class="mt-4 w-full bg-black hover:bg-gray-950 text-white font-semibold py-4 rounded-lg"
+          >
+            Create account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

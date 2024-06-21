@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Components' imports
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginSignUpComponent } from './components/login-signup/login-signup.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginSignUpComponent },
+  { path: 'login', component: LoginSignUpComponent },
   { path: '**', redirectTo: '' },
 ];
 
