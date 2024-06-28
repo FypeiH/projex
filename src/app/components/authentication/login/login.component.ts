@@ -6,6 +6,7 @@ import {
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "../../../../services/auth/auth.service";
 
 @Component({
   selector: "app-login",
@@ -13,23 +14,30 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
-  loggedIn: boolean = false;
-
   loginForm: FormGroup = new FormGroup({
     emailUsername: new FormControl("", Validators.required),
     password: new FormControl("", Validators.required),
+    keepMeSignedIn: new FormControl(false),
   });
+  isPasswordVisible: boolean = false;
+  isInputFocused: boolean = false;
+  isInputHovered: boolean = false;
   triedToSubmit: boolean = false;
+  
 
   @Output() toggleLoginSignup: EventEmitter<void> = new EventEmitter();
 
-  constructor(private toastr: ToastrService, private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService, private authService: AuthService) {}
 
   /**
    * Toggles between login and signup forms.
    */
   toggleSignup(): void {
     this.toggleLoginSignup.emit();
+  }
+
+  togglePasswordVisibility(): void {
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   /**
@@ -52,9 +60,10 @@ export class LoginComponent {
   signIn(): void {
     this.triedToSubmit = true;
     if (this.loginForm.valid) {
-      this.toastr.success("Form is valid", "Success");
-    } else {
-      this.toastr.error("Form is invalid", "Error");
+      this.authService.login(this.loginForm.value.emailUsername, this.loginForm.value.password, this.loginForm.value.keepMeSignedIn).subscribe((auth) => {
+        this.toastr.success("Logged in successfully", "Success");
+        this.router.navigate(["/"]);
+      });
     }
   }
 }

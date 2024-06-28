@@ -5,19 +5,23 @@ import { BrowserModule } from "@angular/platform-browser";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatIconModule } from '@angular/material/icon';
 
 //Components' imports
 import { AppComponent } from "./app.component";
-import { LoginComponent } from "./components/login-signup/login/login.component";
-import { LoginSignUpComponent } from "./components/login-signup/login-signup.component";
-import { SignUpComponent } from "./components/login-signup/signup/signup.component";
+import { LoginComponent } from "./components/authentication/login/login.component";
+import { AuthenticationComponent } from "./components/authentication/authentication.component";
+import { SignUpComponent } from "./components/authentication/signup/signup.component";
 
 //Providers' imports
+import { AuthService } from "../services/auth/auth.service";
+import { TokenInterceptor } from "../services/token-interceptor/token-interceptor.service";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginSignUpComponent,
+    AuthenticationComponent,
     LoginComponent,
     SignUpComponent
   ],
@@ -26,6 +30,7 @@ import { SignUpComponent } from "./components/login-signup/signup/signup.compone
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatIconModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
@@ -34,7 +39,15 @@ import { SignUpComponent } from "./components/login-signup/signup/signup.compone
       resetTimeoutOnDuplicate: true,
     })
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

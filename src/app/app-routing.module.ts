@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Components' imports
-import { AppComponent } from './app.component';
-import { LoginSignUpComponent } from './components/login-signup/login-signup.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 const routes: Routes = [
-  { path: '', component: LoginSignUpComponent },
-  { path: 'login', component: LoginSignUpComponent },
+  { path: '', component: AuthenticationComponent },
+  { path: 'login', component: AuthenticationComponent },
   { path: '**', redirectTo: '' },
 ];
 

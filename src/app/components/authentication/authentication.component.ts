@@ -3,11 +3,11 @@ import { ToastrService } from "ngx-toastr";
 import { LoginComponent } from "./login/login.component";
 
 @Component({
-  selector: "app-login-signup",
-  templateUrl: "./login-signup.component.html",
-  styleUrls: ["./login-signup.component.css"],
+  selector: "app-authentication",
+  templateUrl: "./authentication.component.html",
+  styleUrls: ["./authentication.component.css"],
 })
-export class LoginSignUpComponent {
+export class AuthenticationComponent {
   @ViewChild("login") login!: ElementRef;
   @ViewChild("signup") signup!: ElementRef;
   @ViewChild("cover") cover!: ElementRef;

@@ -4,7 +4,7 @@
   </div>
   <div class="flex items-center">
     <button
-      class="underline text-sm font-semibold"
+      class="text-sm font-semibold hover:underline"
       (click)="toggleSignup()"
     >
       Create an account
@@ -62,30 +62,47 @@
             placeholder="Email or username"
             aria-label="Email or username"
           />
-          <input
-            type="password"
-            formControlName="password"
-            class="w-full bg-white p-4 rounded-lg placeholder:text-gray-700 border-0"
-            [ngClass]="{
-              '!bg-red-100 text-red-600 placeholder:text-red-600':
-                loginForm.get('password')?.invalid && triedToSubmit
-            }"
-            placeholder="Password"
-            aria-label="Password"
-          />
+          <div class="flex relative">
+            <input
+              [type]="isPasswordVisible ? 'text' : 'password'"
+              formControlName="password"
+              class="w-full bg-white p-4 rounded-lg placeholder:text-gray-700 border-0"
+              [ngClass]="{
+                '!bg-red-100 text-red-600 placeholder:text-red-600':
+                  loginForm.get('password')?.invalid && triedToSubmit
+              }"
+              (focus)="isInputFocused = true"
+              (blur)="isInputFocused = false"
+              (mouseover)="isInputHovered = true"
+              (mouseout)="isInputHovered = false"
+              placeholder="Password"
+              aria-label="Password"
+            />
+            <button
+              type="button"
+              class="absolute right-0 top-0 bottom-0 flex items-center px-4 text-gray-500 bg-white border-0 focus:ring-0 focus:ring-offset-0 rounded-lg cursor-pointer"
+              (click)="togglePasswordVisibility()"
+              (mouseover)="isInputHovered = true"
+              (mouseout)="isInputHovered = false"
+              [ngClass]="{'hidden': !isInputFocused && !isInputHovered}"
+            >
+              <mat-icon class="material-symbols-outlined">{{ isPasswordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </div>
+          
           <div class="flex flex-row justify-between items-center mt-4 mb-8">
             <div class="flex items-center">
               <input
-                id="rememberMe"
+                id="keepMeSignedIn"
+                formControlName="keepMeSignedIn"
                 type="checkbox"
-                value=""
                 class="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-0 focus:ring-offset-0 rounded mr-2"
               />
-              <label for="rememberMe" class="text-sm font-medium"
+              <label for="keepMeSignedIn" class="text-sm font-medium"
                 >Keep me signed in</label
               >
             </div>
-            <a href="#" class="text-sm font-medium underline"
+            <a href="#" class="text-sm font-medium hover:underline"
               >Forgot password</a
             >
           </div>
@@ -101,5 +118,5 @@
   </div>
 </div>
 <div class="flex justify-center">
-  <a href="#" class="underline font-medium text-sm">Trouble in signing in?</a>
+  <a href="#" class="font-medium hover:underline text-sm">Trouble in signing in?</a>
 </div>

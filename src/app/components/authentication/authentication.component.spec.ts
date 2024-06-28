@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
-import { LoginSignUpComponent } from './login-signup.component';
+import { AuthenticationComponent } from './authentication.component';
 
-describe('LoginSignUpComponent', () => {
+describe('AuthenticationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoginSignUpComponent],
+      imports: [AuthenticationComponent],
     }).compileComponents();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(LoginSignUpComponent);
+    const fixture = TestBed.createComponent(AuthenticationComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
